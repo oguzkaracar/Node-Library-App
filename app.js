@@ -8,6 +8,7 @@ const expressLayouts = require("express-ejs-layouts");
 const app = express();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const methodOverride = require("method-override");
 
 // --Router ---- index sayfası route işlemleri
 const indexRouter = require("./routes/index");
@@ -20,6 +21,7 @@ app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
 app.set("layout", "layouts/layout"); // bütün viewlar burada gösterilecek aslında...
 app.use(expressLayouts); // layout olarak express-ejs-layouts modülünü kullanacağımızı belirttik..
+app.use(methodOverride('_method')); // post,delete,put methodlarını kontrol etmek için...
 app.use(express.static("public")); // static dosyalarımızın path'ini belirttik..
 app.use(bodyParser.urlencoded({ limit: "10mb", extended: false }));
 
