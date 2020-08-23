@@ -19,9 +19,6 @@ router.get("/", async (req, res) => {
         res.redirect('/');
     }
     
-    
-    //res.render("authors/index");
-    
 });
 
 // yeni yazarları getir...
@@ -31,13 +28,14 @@ router.get("/new", (req, res) => {
 
 // yazar oluştur.
 router.post("/", async (req, res) => {
-	const author = new Author({ // yeni bir Author modeli oluşturduk ve özellik olarak formdan gelen ismi modele uygun olarak ekleyecez..
+	const author = new Author({ // yeni bir Author koleksiyonu oluşturduk ve özellik olarak formdan gelen ismi modele uygun olarak ekleyecez..
 		name: req.body.name, // yazar ekleme işini de post metodu ile ekledik.
 	});
 
 	try {
         const newAuthor = await author.save(); 
-        // veri tabanına kaydetme işlemi... async kullanarak callback karmaşasından kurtulmuş oluyoruz...
+		// veri tabanına kaydetme işlemi... async kullanarak callback karmaşasından kurtulmuş oluyoruz...
+		//res.redirect(`authors/${newAuthor.id}`); // yeni yazar oluşturulunca sayfasına git..
         res.redirect('authors');
 	} catch {
 		res.render('authors/new',{
@@ -46,7 +44,7 @@ router.post("/", async (req, res) => {
             // eğer hata oluşursa bu şekilde bir değişken oluşturulp, template e gönderilecek.
 		});
 	}
-
+    // ----------- klasik callback stili ile yaparsak --------
 	// author.save((err, newAuthor) =>{// form inputtan gelen yeni yazarı database'e ekleyecez.
 	//     if(err){
 	//         let locals = {errorMessage: 'Something went wrong!'}; // local variable tanımlama...
@@ -64,4 +62,3 @@ router.post("/", async (req, res) => {
 
 module.exports = router;
 
-// Buradan : https://youtu.be/esy4nRuShl8?t=1286  --- devam et...

@@ -2,7 +2,7 @@ if (process.env.NODE_ENV !== "production") {
 	// eğer node evn olarak production yok ise ekle..
 	require("dotenv").config();
 }
-
+// modules
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
 const app = express();
@@ -12,7 +12,8 @@ const bodyParser = require("body-parser");
 // --Router ---- index sayfası route işlemleri
 const indexRouter = require("./routes/index");
 // --Router ---- author route işlemleri
-const authorRouter = require('./routes/authors');
+const authorRouter = require("./routes/authors");
+const bookRouter = require("./routes/books");
 
 // -- View - layout - Static files işlemleri
 app.set("view engine", "ejs");
@@ -20,9 +21,7 @@ app.set("views", __dirname + "/views");
 app.set("layout", "layouts/layout"); // bütün viewlar burada gösterilecek aslında...
 app.use(expressLayouts); // layout olarak express-ejs-layouts modülünü kullanacağımızı belirttik..
 app.use(express.static("public")); // static dosyalarımızın path'ini belirttik..
-app.use(bodyParser.urlencoded({limit:'10mb', extended:false}))
-
-
+app.use(bodyParser.urlencoded({ limit: "10mb", extended: false }));
 
 // ----- database işlemleri ----
 mongoose
@@ -39,7 +38,7 @@ mongoose
 		process.exit();
 	});
 
-// mongodb://localhost/mybrary
+// mongodb://localhost/mybrary -- Eğer bilgisauarımda mongoDB yüklü olsaydı, bu şekilde kullanılacaktı...
 
 // const db = mongoose.connection;
 // db.on("error", (error) => console.log(error));
@@ -47,5 +46,7 @@ mongoose
 
 app.use("/", indexRouter);
 app.use("/authors", authorRouter);
+app.use("/books", bookRouter);
 
-app.listen(process.env.PORT || 3000); // projeyi canlıya aldığımızda process.env.PORT kısmı otomatik karar verecek ama aynı zamanda 3000 portunu seçtik.
+app.listen(process.env.PORT || 3000);
+// projeyi canlıya aldığımızda process.env.PORT kısmı otomatik karar verecek ama aynı zamanda 3000 portunu seçtik.
