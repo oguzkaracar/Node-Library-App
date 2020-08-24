@@ -49,7 +49,7 @@ router.post('/', async (req, res) => {
   } catch {
     renderNewPage(res, book, true)
   }
-})
+})// boş eklersek hata veriyor. ÇÖZ!!!
 
 // Show Book Route
 router.get('/:id', async (req, res) => {
@@ -152,6 +152,9 @@ function saveCover(book, coverEncoded) {
   if (cover != null && imageMimeTypes.includes(cover.type)) {
     book.coverImage = new Buffer.from(cover.data, 'base64')
     book.coverImageType = cover.type
+  }
+  else{
+
   }
 }
 

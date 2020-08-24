@@ -110,14 +110,16 @@ router.delete("/:id/", async (req, res) => {
 	let author;
 	try {
 		author = await Author.findById(req.params.id);
+		console.log(author);
 		await author.remove();
 		res.redirect('/authors');
 	} catch {
 		if (author == null){
 			res.redirect('/'); 
 		}else{
-			res.redirect(`/authors/${author.id}`);
+			//res.redirect(`/authors/${author.id}`);
 			// bu kısımda düzeltme yapılacak. authors sayfasında silme işlemi yapınca author detail sayfasına gitmemesi gerekiyor...
+			res.redirect(`/authors/${author.id}`,) 
 		}
 	}
 });
