@@ -32,6 +32,7 @@
     font-size: 1.2rem;
     font-weight: 500;
     align-self: flex-start;
+    justify-self: flex-start;
   }
   
   .book-details-grid {
@@ -51,10 +52,23 @@
       "edit delete"
       "author author";
     grid-gap: .5rem;
-    margin-top: .5rem;
+    margin-top: 1rem;
   }
   
   .book-details-author-button {
     grid-area: author;
     justify-self: stretch;
+  }
+
+  @media screen and (max-width:800px){
+    .book-details{
+      flex-direction: column;
+      align-items: center;
+    }
+    .book-details-grid{
+      margin-top: 1.5rem;
+      background-color: rgba(75, 179, 211, 0.5);
+      border-radius: 0.5rem;
+      padding:1rem
+    }
   }
