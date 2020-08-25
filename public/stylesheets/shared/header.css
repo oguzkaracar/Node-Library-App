@@ -112,25 +112,31 @@ a.site-logo {
   /* navbar css for mobile start */
   .nav-toggler{
     display: block;
+    margin-right: .5rem;
+  }
+  .header-title{
+    margin-left: 0.5rem;
+    font-size: 2.4rem;
   }
   .site-navbar {
-    min-height: 60px;
+    min-height: 75px;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: auto;
     background-color: rgba(0,0,0,.85);
+    z-index: 10000;
   }
   .site-navbar ul {
     position: absolute;
     width: 100%;
-    height: calc(100vh - 72px);
+    height: calc(100vh - 75px);
     left: 0;
-    top: 72px;/*--*/
+    top: 75px;/*--*/
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     background-color: rgba(0,0,0,.85);
     border-top: 2px solid var(--color-text-light);;
     max-height: 0;
@@ -145,7 +151,7 @@ a.site-logo {
     position: relative;
   }
   .site-navbar ul li a {
-    padding: 1rem 5rem;
+    padding: 1rem 2rem;
     position: relative;
     font-size: 2rem;
   }
@@ -161,6 +167,18 @@ a.site-logo {
     transition: 0.3s;
     display: block;
   }
+
+  .site-navbar ul.open {
+    max-height: 100vh;
+    overflow: visible;
+  }
+  /* navbar css for mobile end */
+}
+
+
+/* touchscreen hover effects */
+
+@media (hover: hover) and (pointer: fine) {
   .site-navbar ul li a:hover {
     color: lightblue;
   }
@@ -168,12 +186,4 @@ a.site-logo {
   .site-navbar a:hover:after {
     width: 50%;
   }
-  
-  .site-navbar ul.open {
-    max-height: 100vh;
-    overflow: visible;
-  }
-  /* navbar css for mobile end */
 }
-/* mobile breakpoint end */
-
