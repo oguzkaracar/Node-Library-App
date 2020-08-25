@@ -1,41 +1,241 @@
-:root {
-    --nav-title-font-size: 3rem;
-    --nav-title-font-weight: bold;
-    --nav-link-font-weight: 300;
-  }
-  
+
+/*
+.header-title {
+	color: var(--color-text-light);
+	text-decoration: none;
+	font-size: var(--nav-title-font-size);
+	font-weight: var(--nav-title-font-weight);
+}
+
+.header-nav {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 5rem;
+}
+
+.nav-container {
+	display: flex;
+	margin: 0;
+	padding: 0;
+}
+
+.nav-container li {
+	list-style: none;
+}
+
+.nav-container li a {
+	text-decoration: none;
+	color: var(--color-text-light);
+	font-weight: var(--nav-link-font-weight);
+	padding: 1rem;
+}
+
+.nav-container li a:hover,
+.header-title:hover {
+	color: white;
+}
+
+@media screen and (max-width: 816px) {
   .header-title {
-    color: var(--color-text-light);
-    text-decoration: none;
-    font-size: var(--nav-title-font-size);
-    font-weight: var(--nav-title-font-weight);
+    font-size: 1.5rem;
   }
-  
-  .header-nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+
+	.header-nav {
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		margin-bottom: 3rem;
+	}
+	.header-nav .nav-container {
+		margin: 0.4rem 0 0 0;
+		flex-direction: column;
+		align-items: center;
+		padding: 0.4rem;
+	}
+
+	.nav-container li {
+		padding: 0.5rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.nav-container li:last-child {
+		margin-bottom: 0;
+	}
+} */
+
+
+:root {
+	--nav-title-font-size: 3rem;
+	--nav-title-font-weight: bold;
+	--nav-link-font-weight: 300;
+}
+
+
+.header-title {
+	color: var(--color-text-light);
+	text-decoration: none;
+	font-size: var(--nav-title-font-size);
+	font-weight: var(--nav-title-font-weight);
+}
+
+/* navbar regular css start */
+.navbar-area {
+  margin-bottom: 5rem;
+}
+.site-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+a.site-logo {
+  font-size: 26px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+}
+.site-navbar ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+.site-navbar li a {
+	text-decoration: none;
+	color: var(--color-text-light);
+	font-weight: var(--nav-link-font-weight);
+	padding: 1rem;
+}
+
+.site-navbar li a:hover,
+.header-title:hover {
+	color: white;
+}
+/* navbar regular css end */
+
+
+/* nav-toggler css start */
+.nav-toggler {
+  border: 3px solid #fff;
+  padding: 5px;
+  background-color: transparent;
+  cursor: pointer;
+  height: 45px;
+  display: none;
+}
+.nav-toggler span, 
+.nav-toggler span:before, 
+.nav-toggler span:after {
+  width: 28px;
+  height: 3px;
+  background-color: #fff;
+  display: block;
+  transition: .3s;
+}
+.nav-toggler span:before {
+  content: '';
+  transform: translateY(-9px);
+}
+.nav-toggler span:after {
+  content: '';
+  transform: translateY(6px);
+}
+.nav-toggler.toggler-open span {
+  background-color: transparent;
+}
+.nav-toggler.toggler-open span:before {
+  transform: translateY(0px) rotate(45deg);
+}
+.nav-toggler.toggler-open span:after {
+  transform: translateY(-3px) rotate(-45deg);
+}
+/* nav-toggler css start */
+
+/* intro-area css start */
+.intro-area {
+  height: calc(100vh - 61px);
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+}
+.intro-area h2 {
+  font-size: 50px;
+  font-weight: 300;
+  line-height: 50px;
+  margin-bottom: 25px;
+}
+.intro-area p {
+  font-size: 18px;
+}
+/* intro-area css end */
+
+
+
+/* mobile breakpoint start */
+@media screen and (max-width: 800px) {
+ 
+  /* navbar css for mobile start */
+  .nav-toggler{
+    display: block;
+  }
+  .site-navbar {
+    min-height: 60px;
+  }
+  .site-navbar ul {
+    position: absolute;
+    width: 100%;
+    height: calc(100vh - 90px);
+    left: 0;
+    top: 90px;
+    flex-direction: column;
     align-items: center;
-    margin-bottom: 5rem;
+    background-color: rgba(0,0,0,.75);
+    max-height: 0;
+    overflow: hidden;
+    transition: .3s;
   }
-  
-  .header-nav ul {
-    display: flex;
-    margin: 0;
-    padding: 0;
+  .site-navbar ul li {
+    width: 100%;
+    text-align: center;
+    padding:1rem 0;
+    margin: 1rem 0;
+    position: relative;
   }
-  
-  .header-nav li {
-    list-style: none;
+  .site-navbar ul li a {
+    padding: 1rem 5rem;
+    position: relative;
   }
-  
-  .header-nav li a {
-    text-decoration: none;
-    color: var(--color-text-light);
-    font-weight: var(--nav-link-font-weight);
-    padding: 1rem;
+  .site-navbar ul li a:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0%;
+    transform: translateX(-50%);
+    height: 3px;
+    background: #fff;
+    transition: 0.3s;
+    display: block;
   }
-  
-  .header-nav li a:hover, .header-title:hover {
-    color: white;
+  .site-navbar ul li a:hover {
+    color: lightblue;
   }
+
+  .site-navbar a:hover:after {
+    width: 25%;
+  }
+  .site-navbar ul.open {
+    max-height: 100vh;
+    overflow: visible;
+  }
+  .intro-area h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
+  }  
+  /* navbar css for mobile end */
+}
+/* mobile breakpoint end */
+

@@ -53,3 +53,13 @@
 	color: var(--color-btn-danger-text-dark);
 	background-color: var(--color-btn-danger-background-dark);
 }
+
+/* Mobile Styles */
+@media screen and (max-width: 816px) {
+	.btn-row {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+}

@@ -51,4 +51,4 @@ app.use("/authors", authorRouter);
 app.use("/books", bookRouter);
 
 app.listen(process.env.PORT || 3000);
-// projeyi canlıya aldığımızda process.env.PORT kısmı otomatik karar verecek ama aynı zamanda 3000 portunu seçtik.
+// projeyi canlıya aldığımızda process.env.PORT kısmı otomatik karar verecek ama localde 3000 portundan devam edecek...
